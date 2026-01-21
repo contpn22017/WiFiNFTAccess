@@ -1,4 +1,4 @@
-# 🏗 Scaffold-ETH 2
+# 🏗 Emision de Tickets con Scaffold-ETH 2
 
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
@@ -86,3 +86,15 @@ To know more about its features, check out our [website](https://scaffoldeth.io)
 We welcome contributions to Scaffold-ETH 2!
 
 Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+
+
+Adan@SERVIDOR-SUGAU MINGW64 /d/Desktop/Maestria/Desarrollo de Apps Descentralizadas/WiFiNFTAccess (main)
+$ yarn deploy
+√ Enter password to decrypt private key:
+Nothing to compile
+No need to generate any newer typings.
+deploying "WiFiAccessNFT" (tx: 0x90a0dff433934d9cf8098a1fdf32be3520ea21ecf3f24ebf41a624f05f921378)...: deployed at 0xACC756f6AA661554e78aB346C7dCc888588155a2 with 1838062 gas
+👋 WiFiAccessNFT deployed to: 0xACC756f6AA661554e78aB346C7dCc888588155a2
+📝 Updated TypeScript contract definition file on ../nextjs/contracts/deployedContracts.ts
+
+yarn verify --network sepolia
