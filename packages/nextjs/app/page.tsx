@@ -1,74 +1,49 @@
 "use client";
 
-import Link from "next/link";
-import { Address } from "@scaffold-ui/components";
 import type { NextPage } from "next";
-import { hardhat } from "viem/chains";
 import { useAccount } from "wagmi";
-import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { useTargetNetwork } from "~~/hooks/scaffold-eth";
+import { BuyTicket } from "~~/components/wifi/BuyTicket";
+import { UserTickets } from "~~/components/wifi/UserTickets";
 
 const Home: NextPage = () => {
-  const { address: connectedAddress } = useAccount();
-  const { targetNetwork } = useTargetNetwork();
+  const { isConnected } = useAccount();
 
   return (
     <>
       <div className="flex items-center flex-col grow pt-10">
-        <div className="px-5">
-          <h1 className="text-center">
-            <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
+        <div className="px-5 w-full max-w-4xl">
+          <h1 className="text-center mb-8">
+            <span className="block text-4xl font-bold">WiFi NFT Access</span>
+            <span className="block text-xl">Acceso WiFi Comunitario Descentralizado</span>
           </h1>
-          <div className="flex justify-center items-center space-x-2 flex-col">
-            <p className="my-2 font-medium">Connected Address:</p>
-            <Address
-              address={connectedAddress}
-              chain={targetNetwork}
-              blockExplorerAddressLink={
-                targetNetwork.id === hardhat.id ? `/blockexplorer/address/${connectedAddress}` : undefined
-              }
-            />
-          </div>
-          <p className="text-center text-lg">
-            Get started by editing{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/nextjs/app/page.tsx
-            </code>
-          </p>
-          <p className="text-center text-lg">
-            Edit your smart contract{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              YourContract.sol
-            </code>{" "}
-            in{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/hardhat/contracts
-            </code>
-          </p>
-        </div>
 
-        <div className="grow bg-base-300 w-full mt-16 px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col md:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contracts
-                </Link>{" "}
-                tab.
-              </p>
+          <div className="flex flex-col gap-8">
+            {/* Status Section */}
+            <div className="text-center">
+              {!isConnected ? (
+                <div className="alert alert-warning shadow-lg">
+                  <span>Por favor conecta tu wallet para continuar.</span>
+                </div>
+              ) : (
+                <div className="alert alert-success shadow-lg">
+                  <span>Wallet Conectada. Sistema listo.</span>
+                </div>
+              )}
             </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
-                  Block Explorer
-                </Link>{" "}
-                tab.
-              </p>
+
+            {/* Buy Section */}
+            <div className="flex justify-center">
+              <BuyTicket />
+            </div>
+
+            {/* Dashboard Section */}
+            <div className="bg-base-200 rounded-xl p-6 shadow-md">
+              <h2 className="text-2xl font-bold mb-4">Mis Tickets</h2>
+              <UserTickets />
+            </div>
+
+            <div className="text-center text-sm text-gray-500 mt-8">
+              <p>El router verificará automáticamente tu acceso si tienes un ticket activo.</p>
             </div>
           </div>
         </div>

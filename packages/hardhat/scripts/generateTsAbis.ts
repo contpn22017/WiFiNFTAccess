@@ -77,7 +77,9 @@ function getInheritedFunctions(sources: Record<string, any>, contractName: strin
 
 function getContractDataFromDeployments() {
   if (!fs.existsSync(DEPLOYMENTS_DIR)) {
-    throw Error("At least one other deployment script should exist to generate an actual contract.");
+    // throw Error("At least one other deployment script should exist to generate an actual contract.");
+    console.log("No deployments directory found. Skipping contract generation.");
+    return {}; // Devuelve un objeto vacío en lugar de lanzar un error
   }
   const output = {} as Record<string, any>;
   const chainDirectories = getDirectories(DEPLOYMENTS_DIR);
