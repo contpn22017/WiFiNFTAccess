@@ -1,4 +1,11 @@
 # 🏗 Emision de Tickets con Scaffold-ETH 2
+<<<<<<< HEAD
+=======
+
+👋 WiFiAccessNFT deployed to: 0xACC756f6AA661554e78aB346C7dCc888588155a2
+
+El archivo de las variables de entorno (.env) deben estar dentro de la carpeta packages/hardhat
+>>>>>>> 731319f8c812a137072020f00680251745c82e7d
 
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
